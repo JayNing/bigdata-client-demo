@@ -1,4 +1,4 @@
-package com.ning.hadoop.demo02;
+package com.ning.hadoop.serializable;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;

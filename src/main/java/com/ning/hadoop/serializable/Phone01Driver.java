@@ -1,4 +1,4 @@
-package com.ning.hadoop.demo02;
+package com.ning.hadoop.serializable;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;

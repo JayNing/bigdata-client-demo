@@ -52,9 +52,15 @@ public class WordCountDriver {
 
         // 6 设置输入和输出路径
         FileInputFormat.setInputPaths(job, new Path(args[0]));
-        FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
-        // 7 提交
+        // 7 hadoop输出目录不能是已存在，如果已存在，则删除
+        Path output = new Path(args[1]);
+        if (output.getFileSystem(configuration).exists(output)) {
+            output.getFileSystem(configuration).delete(output, true);
+        }
+        FileOutputFormat.setOutputPath(job, output);
+
+        // 8 提交
         boolean result = job.waitForCompletion(true);
 
         System.exit(result ? 0 : 1);

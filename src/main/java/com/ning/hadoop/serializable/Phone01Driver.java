@@ -18,7 +18,7 @@ public class Phone01Driver {
 
     public static void main(String[] args) throws Exception{
 
-        String inputPath = "C:\\Users\\ningjianjian\\Desktop\\wc\\in\\phone_data .txt";
+        String inputPath = "C:\\Users\\ningjianjian\\Desktop\\wc\\in\\phone_data.txt";
         String outputPath = "C:\\Users\\ningjianjian\\Desktop\\wc\\phone01_op\\";
         args = new String[]{inputPath, outputPath};
 

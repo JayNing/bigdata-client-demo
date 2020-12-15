@@ -1,5 +1,6 @@
 package com.ning.hadoop.wc01;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -24,9 +25,11 @@ public class WordCountMapper extends Mapper<LongWritable, Text, Text, IntWritabl
         String[] words = value.toString().split(" ");
         if (words.length > 0){
             for (String word : words) {
-                redKey.set(word);
-                redValue.set(1);
-                context.write(redKey,redValue);
+                if (StringUtils.isNotBlank(word)){
+                    redKey.set(word);
+                    redValue.set(1);
+                    context.write(redKey,redValue);
+                }
             }
         }
     }

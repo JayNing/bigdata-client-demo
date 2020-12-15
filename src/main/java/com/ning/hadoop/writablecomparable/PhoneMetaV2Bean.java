@@ -1,6 +1,6 @@
-package com.ning.hadoop.serializable;
+package com.ning.hadoop.writablecomparable;
 
-import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -13,17 +13,17 @@ import java.io.IOException;
  *
  * @author ningjianjian
  */
-public class PhoneMetaBean implements Writable {
+public class PhoneMetaV2Bean implements WritableComparable<PhoneMetaV2Bean> {
 
     private Long upFlow;
     private Long downFlow;
     private Long sumFlow;
 
-    public PhoneMetaBean() {
+    public PhoneMetaV2Bean() {
         super();
     }
 
-    public PhoneMetaBean( Long upFlow, Long downFlow, Long sumFlow) {
+    public PhoneMetaV2Bean(Long upFlow, Long downFlow, Long sumFlow) {
         super();
         this.upFlow = upFlow;
         this.downFlow = downFlow;
@@ -70,8 +70,13 @@ public class PhoneMetaBean implements Writable {
 
     @Override
     public String toString() {
-        return  upFlow +
+        return  "\t" + upFlow +
                 "\t" + downFlow +
                 "\t" + sumFlow;
+    }
+
+    @Override
+    public int compareTo(PhoneMetaV2Bean o) {
+        return Long.compare(o.getSumFlow(), this.getSumFlow());
     }
 }
